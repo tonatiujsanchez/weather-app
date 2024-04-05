@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { ToggleTemp } from './ToggleTemp'
 import { kelvinToCelsius } from '../utils'
 
 export const CurrentWeather = ({ currentWeather }) => {
@@ -27,7 +28,18 @@ export const CurrentWeather = ({ currentWeather }) => {
                     <li className="current-weather__item"><span>Pressure</span> <strong>{ main.pressure }hPa</strong> </li>
                 </ul>
             </div>
-
+            <div className="current-weather__toggle">
+                <label htmlFor="">°C / °F</label>
+                <ToggleTemp
+                    value={ true }
+                    onChange={ console.log }
+                />
+            </div>
+            <div className="current-weather__search">
+                <button>
+                    🔎 Burcar por lugar
+                </button>
+            </div>
         </article>
     )
 }

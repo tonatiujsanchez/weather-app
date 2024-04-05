@@ -12,7 +12,7 @@ html {
     --container-color: #F8FAFC;
     --content-color: #E5E5E5;
 
-    /* 800, 900 */
+    /* 600, 800, 900 */
 }
 
 *, *::after, *::before {
@@ -45,16 +45,7 @@ li {
     min-height: 100vh;
 }
 
-/* ====== ====== ====== MAIN ====== ====== ======  */
-.main {
-
-}
-
-/* ====== ====== ====== HEADER ====== ====== ======  */
-.header {
-
-}
-
+/* ====== ====== ====== ASIDE ====== ====== ======  */
 .aside {
     min-height: 100%;
 }
@@ -131,12 +122,87 @@ li {
     font-size: 2rem;
 }
 
+.current-weather__toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block-start: 6rem;
+}
+
+.current-weather__search {
+    margin-block-start: 4rem;
+    width: 100%;
+}
+
+.current-weather__search button{
+    border-radius: 0.4rem;
+    border: none;
+    width: 100%;
+    padding-block: 1rem;
+    padding-inline: 1.2rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.current-weather__search button:hover{
+    color: var(--title-color);
+}
+
+/* ====== ====== ====== MAIN ====== ====== ======  */
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    padding-block: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input {
+    border: none;
+    border-radius: 0.4rem;
+    padding: 1.2rem 1rem;
+    font-size: 1.6rem;
+}
+
+.button-submit {
+    margin-block-start: 1rem;
+    border:  none;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: #03A9F4;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    align-self: flex-end;
+    width: 14rem;
+}
+
+.button-submit:hover {
+    background-color: #2cbcff;
+}
+
+
 /* ====== ====== ====== TOGGLE  ====== ====== ======  */
 .toggle-button-cover {
     display: table-cell;
     position: relative;
     width: 16rem;
-    height: 8rem;
+    height: 6rem;
     box-sizing: border-box;
 }
   
@@ -246,8 +312,12 @@ li {
 
 @media (min-width: 768px){
 
+    .aside {
+        min-width: 40rem;
+    }
+
     .current-weather__place {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .current-weather__icon {
@@ -257,5 +327,12 @@ li {
     .current-weather__temp {
         font-size: 6rem;
     }
-    
+
+    .current-weather__toggle {
+        margin-block-start: 10rem;
+    }
+
+    .current-weather__toggle label {
+        font-weight: 600;
+    }    
 }

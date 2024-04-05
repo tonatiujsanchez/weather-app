@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
-import { CurrentWeather, ToggleTemp } from './components'
+import { CurrentWeather, Form } from './components'
+// import { getWeatherByPlace } from './services'
 
 function App() {
 
@@ -24,27 +25,13 @@ function App() {
         navigator.geolocation.getCurrentPosition(success, error)
     }, [])
 
-    // useEffect(() => {
-    //     if(coords){
-    //         const url = `https://api.openweathermap.org/data/2.5/weather`
-            
-    //         const params = new URLSearchParams()
-    //         params.append('lat', coords.lat)
-    //         params.append('lon', coords.lon)
-    //         params.append('appid', import.meta.env.VITE_OPEN_WEATHER_API_KEY)
-            
-    //         axios.get(url, { params })
-    //             .then(({ data }) => setCurrentWeather(data))
-    //             .catch( console.log )
-    //     }
-    // }, [coords])
-
     useEffect(() => {
         if(coords){
             const url = `https://api.openweathermap.org/data/2.5/weather`
             
             const params = new URLSearchParams()
-            params.append('q', 'tlapa de comonfort, mx')
+            params.append('lat', coords.lat)
+            params.append('lon', coords.lon)
             params.append('appid', import.meta.env.VITE_OPEN_WEATHER_API_KEY)
             
             axios.get(url, { params })
@@ -52,6 +39,8 @@ function App() {
                 .catch( console.log )
         }
     }, [coords])
+
+
 
     return (
         <div className="content">
@@ -62,17 +51,9 @@ function App() {
                     )
                 }
             </aside>
-            <div className="main-container">
-                <header className="header">
-                    <ToggleTemp
-                        value={ true }
-                        onChange={ console.log }
-                    />
-                </header>     
-                <main className="main">
-                    week
-                </main>
-            </div>
+            <main className="main">
+                <Form setCurrentWeather={ setCurrentWeather } />
+            </main>
         </div>
     )
 }
