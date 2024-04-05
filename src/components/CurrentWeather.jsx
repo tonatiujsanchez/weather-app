@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { ToggleTemp } from './ToggleTemp'
 import { kelvinToCelsius } from '../utils'
 
-export const CurrentWeather = ({ currentWeather }) => {
+export const CurrentWeather = ({ currentWeather, onShowFormModal }) => {
     
     const { name, sys, weather, main, wind, clouds } = currentWeather
 
@@ -36,7 +36,9 @@ export const CurrentWeather = ({ currentWeather }) => {
                 />
             </div>
             <div className="current-weather__search">
-                <button>
+                <button
+                    onClick={ onShowFormModal }
+                >
                     🔎 Burcar por lugar
                 </button>
             </div>
@@ -46,5 +48,6 @@ export const CurrentWeather = ({ currentWeather }) => {
 
 
 CurrentWeather.propTypes = {
-    currentWeather: PropTypes.object
+    currentWeather: PropTypes.object,
+    onShowFormModal: PropTypes.func
 }

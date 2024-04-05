@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
-import { CurrentWeather, Form } from './components'
+import { CurrentWeather, Form, Modal } from './components'
 // import { getWeatherByPlace } from './services'
 
 function App() {
 
     const [coords, setCoords] = useState()
     const [currentWeather, setCurrentWeather] = useState()
+    const [showModal, setShowModal] = useState(false)
 
     const success = ({ coords }) => {
         const userLocation = {
@@ -41,19 +42,37 @@ function App() {
     }, [coords])
 
 
+    const onShowFormModal = () => {
+      setShowModal(true)
+    }
+    const onHiddenFormModal = () => {
+      setShowModal(false)
+    }
 
     return (
         <div className="content">
             <aside className="aside">
                 {   
                     currentWeather && (
-                        <CurrentWeather currentWeather={ currentWeather } />
+                        <CurrentWeather 
+                          currentWeather={ currentWeather }
+                          onShowFormModal={ onShowFormModal }
+                        />
                     )
                 }
             </aside>
             <main className="main">
-                <Form setCurrentWeather={ setCurrentWeather } />
+                
             </main>
+            {
+              showModal && (
+                <Modal
+                  onHiddenFormModal = { onHiddenFormModal }
+                >
+                  <Form setCurrentWeather={ setCurrentWeather } />
+                </Modal>
+              )
+            }
         </div>
     )
 }
