@@ -1,12 +1,23 @@
 import PropTypes from 'prop-types'
 import { ToggleTemp } from './ToggleTemp'
-import { kelvinToCelsius } from '../utils'
+import { kelvinToCelsius, kelvinToFahrenheit } from '../utils'
 
-export const CurrentWeather = ({ currentWeather, onShowFormModal }) => {
+export const CurrentWeather = ({ currentWeather, onShowFormModal, isCel, onChangeToggle }) => {
     
     const { name, sys, weather, main, wind, clouds } = currentWeather
 
-    console.log(currentWeather)
+    const temp = isCel 
+        ? `${ kelvinToCelsius( main.temp ) } °C` 
+        : `${ kelvinToFahrenheit ( main.temp ) } °F`
+
+    const tempMin = isCel 
+        ? `${ kelvinToCelsius( main.temp_min ) } °C` 
+        : `${ kelvinToFahrenheit ( main.temp_min ) } °F`
+
+    const tempMax = isCel 
+        ? `${ kelvinToCelsius( main.temp_max ) } °C` 
+        : `${ kelvinToFahrenheit ( main.temp_max ) } °F`
+
 
     return (
         <article className="current-weather">
@@ -15,10 +26,10 @@ export const CurrentWeather = ({ currentWeather, onShowFormModal }) => {
             <figure className="current-weather__icon">
                 <img src={`https://openweathermap.org/img/wn/${weather[0].icon}@4x.png`} alt="Weather icon" />
             </figure>
-            <p className="current-weather__temp"> { kelvinToCelsius( main.temp ) }°C </p>
+            <p className="current-weather__temp">{ temp }</p>
             <div className="current-weather__minmax">
-                <p><strong>{ kelvinToCelsius( main.temp_min ) }°C</strong> Min</p>
-                <p><strong>{ kelvinToCelsius( main.temp_max ) }°C</strong> Max</p>
+                <p><strong>{ tempMin }</strong> Min</p>
+                <p><strong>{ tempMax }</strong> Max</p>
             </div>
             <div className="current-weather__data">
                 <p className="current-weather__description">{`${ weather[0].description }`}</p>
@@ -29,10 +40,10 @@ export const CurrentWeather = ({ currentWeather, onShowFormModal }) => {
                 </ul>
             </div>
             <div className="current-weather__toggle">
-                <label htmlFor="">°C / °F</label>
                 <ToggleTemp
-                    value={ true }
-                    onChange={ console.log }
+                    value={ isCel }
+                    onChange={ onChangeToggle }
+                    name="toggle-temp"
                 />
             </div>
             <div className="current-weather__search">
@@ -49,5 +60,7 @@ export const CurrentWeather = ({ currentWeather, onShowFormModal }) => {
 
 CurrentWeather.propTypes = {
     currentWeather: PropTypes.object,
-    onShowFormModal: PropTypes.func
+    onShowFormModal: PropTypes.func,
+    isCel: PropTypes.bool,
+    onChangeToggle: PropTypes.func,
 }

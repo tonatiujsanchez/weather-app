@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-
+import './styles/modal.css'
 
 export const Modal = ({ children, onHiddenFormModal }) => {
     return (

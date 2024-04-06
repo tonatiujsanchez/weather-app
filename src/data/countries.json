@@ -1,0 +1,97 @@
+[
+    {
+        "name": "Mexico",
+        "key": "MX",
+        "flag": "🇲🇽"
+    },
+    {
+        "name": "Argentina",
+        "key": "AR",
+        "flag": "🇦🇷"
+    },
+    {
+        "name": "Bolivia",
+        "key": "BO",
+        "flag": "🇧🇴"
+    },
+    {
+        "name": "Brazil",
+        "key": "BR",
+        "flag": "🇧🇷"
+    },
+    {
+        "name": "Chile",
+        "key": "CL",
+        "flag": "🇨🇱"
+    },
+    {
+        "name": "Colombia",
+        "key": "CO",
+        "flag": "🇨🇴"
+    },
+    {
+        "name": "Costa Rica",
+        "key": "CR",
+        "flag": "🇨🇷"
+    },
+    {
+        "name": "Cuba",
+        "key": "CU",
+        "flag": "🇨🇺"
+    },
+    {
+        "name": "Ecuador",
+        "key": "EC",
+        "flag": "🇪🇨"
+    },
+    {
+        "name": "El Salvador",
+        "key": "SV",
+        "flag": "🇸🇻"
+    },
+    {
+        "name": "Guatemala",
+        "key": "GT",
+        "flag": "🇬🇹"
+    },
+    {
+        "name": "Honduras",
+        "key": "HN",
+        "flag": "🇭🇳"
+    },
+    {
+        "name": "Nicaragua",
+        "key": "NI",
+        "flag": "🇳🇮"
+    },
+    {
+        "name": "Panama",
+        "key": "PA",
+        "flag": "🇵🇦"
+    },
+    {
+        "name": "Paraguay",
+        "key": "PY",
+        "flag": "🇵🇾"
+    },
+    {
+        "name": "Peru",
+        "key": "PE",
+        "flag": "🇵🇪"
+    },
+    {
+        "name": "Dominican Republic",
+        "key": "DO",
+        "flag": "🇩🇴"
+    },
+    {
+        "name": "Uruguay",
+        "key": "UY",
+        "flag": "🇺🇾"
+    },
+    {
+        "name": "Venezuela",
+        "key": "VE",
+        "flag": "🇻🇪"
+    }
+]

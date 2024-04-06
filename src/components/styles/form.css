@@ -1,0 +1,41 @@
+
+.form {
+    padding-block-start: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form__input {
+    border: none;
+    border-radius: 0.4rem;
+    padding: 1.2rem 1rem;
+    font-size: 1.6rem;
+    background-color: rgb(233, 233, 233);
+}
+
+.button-submit {
+    margin-block-start: 1rem;
+    border:  none;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: #03A9F4;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    align-self: flex-end;
+    width: 14rem;
+}
+
+.button-submit:hover {
+    background-color: #2cbcff;
+}
