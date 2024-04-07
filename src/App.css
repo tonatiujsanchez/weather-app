@@ -12,7 +12,7 @@ html {
     --container-color: #F8FAFC;
     --content-color: #E5E5E5;
 
-    /* 600, 800, 900 */
+    /*400, 600, 700, 800, 900 */
 }
 
 *, *::after, *::before {
@@ -29,6 +29,7 @@ body {
     background-size: cover;
     font-size: 1.6rem;
     font-family: "Raleway", sans-serif;
+    min-height: 100vh;
 }
 
 img {
@@ -52,116 +53,26 @@ li {
     min-height: 100%;
 }
 
-/* ====== ====== ====== CURRENT WEATHER ====== ====== ======  */
-
-.current-weather{
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(1rem);
-    border-radius: 0.5rem;
-    padding-block: 3rem;
-    padding-inline: 5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.current-weather__place {
-    text-align: center;
-}
-
-.current-weather__date {
-    margin-block-start: 0.8rem;
-}
-
-.current-weather__temp {
-    font-size: 3.6rem;
-    font-weight: 800;
-    text-align: center;
-}
-
-.current-weather__minmax {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 5rem;
-    margin-block-start: 1.6rem;
-    font-size: 1.8rem;
-}
-
-.current-weather__icon {
-    max-width: 12rem;   
-}
-
-.current-weather__data {
-    margin-block-start: 6rem;
-}
-
-.current-weather__description {
-    text-align: center;
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-block-end: 3rem;
-}
-
-.current-weather__list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-    padding-inline: 4rem;
-}
-
-.current-weather__item {
-    font-size: 1.8rem;
-}
-
-.current-weather__item span{
-    display: inline-block;
-    min-width: 12rem;
-}
-
-.current-weather__item strong {
-    font-size: 2rem;
-}
-
-.current-weather__toggle {
-    margin-block-start: 6rem;
-}
-
-.toggle-field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.current-weather__search {
-    margin-block-start: 4rem;
-    width: 100%;
-}
-
-.current-weather__search button{
-    border-radius: 0.4rem;
-    border: none;
-    width: 100%;
-    padding-block: 1rem;
-    padding-inline: 1.2rem;
-    font-size: 1.6rem;
-    color: var(--text-color);
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.4);
-}
-
-.current-weather__search button:hover{
-    color: var(--title-color);
-}
-
 /* ====== ====== ====== MAIN ====== ====== ======  */
 .main {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 2rem;
 }
 
+.main-loading {
+    background: rgba(138, 138, 138, 0.4);
+    backdrop-filter: blur(1rem);
+    position: fixed;
+    inset: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    z-index: 20;
+}
 
 
 @media (min-width: 768px){
@@ -172,6 +83,9 @@ li {
 
     .aside {
         min-width: 40rem;
+        height: 100vh;
+        position: sticky;
+        inset-block-start: 0;
     }
 
     .current-weather__place {

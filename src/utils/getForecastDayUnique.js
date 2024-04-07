@@ -1,15 +1,17 @@
 
-export const getForecastDayUnique = (forecastArr) => {
+export const getForecastDayUnique = ( forecastArr ) => {
 
-    const newForecastArr = {}
+    const forecastObj = {}
 
     forecastArr.forEach( forecast => {
         const date = forecast.dt_txt.split(' ')[0]
 
-        if(!newForecastArr[date]){
-            newForecastArr[date] = forecast
+        if(!forecastObj[date]){
+            forecastObj[date] = forecast
         }
     })
 
-    return Object.values(newForecastArr)
+    const newForecastArr = Object.values(forecastObj)
+
+    return newForecastArr
 }

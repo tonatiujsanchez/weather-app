@@ -1,0 +1,14 @@
+.forecast {
+    max-width: 108rem;
+}
+
+.forecast__title {
+    margin-block-end: 1rem;
+}
+
+.forecast-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+}

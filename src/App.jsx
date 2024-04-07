@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
-import { CurrentWeather, ForecastCard, Form, Modal } from './components'
+import { CurrentWeather, ForecastList, Form, LoadingMain, Modal } from './components'
 import { getWeatherByCoords } from './services'
-import './App.css'
 import { getForecastDayUnique } from './utils'
+import './App.css'
 
 function App() {
 
     const [coords, setCoords] = useState()
     const [currentWeather, setCurrentWeather] = useState()
+    const [isLoading, setIsLoading] = useState(true)
     const [showModal, setShowModal] = useState(false)
     const [isCel, setIsCel] = useState(true)
 
@@ -31,12 +32,12 @@ function App() {
     const getWeather = async() => {
         
         const { data, hasError } = await getWeatherByCoords(coords)
-
         if(hasError){
             return console.log('Hubo un error')
         }
-
+        
         setCurrentWeather(data)
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -54,6 +55,14 @@ function App() {
         setShowModal(false)
     }
 
+    if( isLoading ){
+        return (
+            <div className="main-loading">
+                <LoadingMain />
+            </div>
+        )
+    }
+    
     return (
         <div className="content">
             <aside className="aside">
@@ -71,13 +80,11 @@ function App() {
             <main className="main">
                 {
                     currentWeather && (
-                        <section>
-                            {
-                                getForecastDayUnique(currentWeather.forecast.list).map(( forecast )=> {
-                                    return <ForecastCard key={ forecast.dt_txt }  forecast={ forecast } />
-                                })
-                            }
-                        </section>
+                        <ForecastList
+                            forecastList={ getForecastDayUnique(currentWeather.forecast.list) }
+                            city={ currentWeather.forecast.city }
+                            isCel={ isCel }
+                        />
                     )
                 }
             </main>

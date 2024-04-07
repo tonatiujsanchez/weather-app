@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { ToggleTemp } from './ToggleTemp'
-import { kelvinToCelsius, kelvinToFahrenheit } from '../utils'
+import { dateFormatLong, kelvinToCelsius, kelvinToFahrenheit } from '../utils'
+import './styles/currentWeather.css'
 
 export const CurrentWeather = ({ currentWeather, onShowFormModal, isCel, onChangeToggle }) => {
     
@@ -22,7 +23,7 @@ export const CurrentWeather = ({ currentWeather, onShowFormModal, isCel, onChang
     return (
         <article className="current-weather">
             <h3 className="current-weather__place">{ name }, { sys.country }</h3>
-            <p className="current-weather__date">Hoy 05 de Abril de 2024</p>
+            <p className="current-weather__date">Hoy { dateFormatLong( new Date() ).toLowerCase() }</p>
             <figure className="current-weather__icon">
                 <img src={`https://openweathermap.org/img/wn/${weather[0].icon}@4x.png`} alt="Weather icon" />
             </figure>
