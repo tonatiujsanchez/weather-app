@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { LoadingSpinner } from './LoadingSpinner'
 import { getWeatherByCoords, getWeatherByPlace } from "../services"
+import { toastError } from '../libs'
 import countries from './../data/countries.json'
 import './styles/form.css'
-import { LoadingSpinner } from './LoadingSpinner'
 
 export const Form = ({ setCurrentWeather, onHiddenFormModal, coords, msgLocationNotAuthorized, setMsgLocationNotAuthorized }) => {
 
@@ -14,12 +15,16 @@ export const Form = ({ setCurrentWeather, onHiddenFormModal, coords, msgLocation
 
     const onClick = async() => {
 
+        if(!coords){
+            return toastError('','Habilite el acceso a la ubicación en la configuración de su navegador o ingrese un lugar desde el formulario.')
+        }
+
         setIsLoading(true)
         const { data, hasError } = await getWeatherByCoords(coords)
         setIsLoading(false)
 
         if(hasError){
-            return console.log('Hubo un error')
+            return toastError('','Lugar no encontrado')
         }
 
         setCurrentWeather(data)
@@ -38,7 +43,7 @@ export const Form = ({ setCurrentWeather, onHiddenFormModal, coords, msgLocation
         setIsLoading(false)
 
         if(hasError){
-            return console.log('Hubo un error')
+            return toastError('','Lugar no encontrado')
         }
 
         setCurrentWeather(data)

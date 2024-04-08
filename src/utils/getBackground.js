@@ -1,7 +1,6 @@
 
 
 export const getBackground = (weatherId) => {
-    console.log(weatherId)
 
     if (weatherId >= 200 && weatherId <= 250) {
         // thunder
