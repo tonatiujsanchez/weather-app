@@ -1,3 +1,11 @@
+.modal__error {
+    margin-block-end: 2rem;
+    color: rgb(206, 0, 0);
+    font-size: 1.4rem;
+    max-width: 35rem;
+    text-align: center;
+    line-height: 1.4;
+}
 
 .form {
     padding-block-start: 5rem;
@@ -34,8 +42,18 @@
     text-transform: uppercase;
     align-self: flex-end;
     width: 14rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button-submit:hover {
     background-color: #2cbcff;
+}
+
+.button-submit:disabled {
+    background-color: #03A9F4;
+    opacity: 0.5;
+    cursor: default;
 }

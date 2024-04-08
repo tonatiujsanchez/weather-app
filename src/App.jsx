@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { CurrentWeather, ForecastList, Form, LoadingMain, Modal } from './components'
 import { getWeatherByCoords } from './services'
-import { getForecastDayUnique } from './utils'
+import { getBackground, getForecastDayUnique } from './utils'
 import './App.css'
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(true)
     const [showModal, setShowModal] = useState(false)
     const [isCel, setIsCel] = useState(true)
+    const [msgLocationNotAuthorized, setMsgLocationNotAuthorized] = useState()
 
     const success = ({ coords }) => {
         const userLocation = {
@@ -21,7 +22,9 @@ function App() {
     }
 
     const error = () => {
-        console.log('Hubicaciòn no autorizada')
+        console.error('Hubicaciòn no autorizada')
+        setMsgLocationNotAuthorized('Por favor, habilite el acceso a la ubicación en la configuración de su navegador o ingrese un lugar desde el formulario.')
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -33,9 +36,11 @@ function App() {
         
         const { data, hasError } = await getWeatherByCoords(coords)
         if(hasError){
+            setIsLoading(false)
             return console.log('Hubo un error')
         }
         
+        setMsgLocationNotAuthorized(undefined)
         setCurrentWeather(data)
         setIsLoading(false)
     }
@@ -46,6 +51,13 @@ function App() {
         }
     }, [coords])
 
+    useEffect(() => {
+        if( currentWeather ){
+            const body = document.querySelector('body')
+            body.style.backgroundImage = `url(${getBackground(currentWeather.weatherToday.weather[0].id)})` 
+        }
+    }, [currentWeather])
+    
 
     const onShowFormModal = () => {
         setShowModal(true)
@@ -89,13 +101,15 @@ function App() {
                 }
             </main>
             {
-                showModal && (
+                ( showModal || msgLocationNotAuthorized ) && (
                     <Modal
                         onHiddenFormModal={onHiddenFormModal}
                     >
                         <Form 
                             setCurrentWeather={setCurrentWeather}
                             onHiddenFormModal={ onHiddenFormModal }
+                            msgLocationNotAuthorized={ msgLocationNotAuthorized }
+                            setMsgLocationNotAuthorized={ setMsgLocationNotAuthorized }
                             coords={ coords }
                         />
                     </Modal>

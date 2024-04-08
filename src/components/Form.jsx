@@ -3,19 +3,25 @@ import PropTypes from 'prop-types'
 import { getWeatherByCoords, getWeatherByPlace } from "../services"
 import countries from './../data/countries.json'
 import './styles/form.css'
+import { LoadingSpinner } from './LoadingSpinner'
 
-export const Form = ({ setCurrentWeather, onHiddenFormModal, coords }) => {
+export const Form = ({ setCurrentWeather, onHiddenFormModal, coords, msgLocationNotAuthorized, setMsgLocationNotAuthorized }) => {
 
     const [country, setCountry] = useState(countries[0])
     const [place, setPlace] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
 
     const onClick = async() => {
+
+        setIsLoading(true)
         const { data, hasError } = await getWeatherByCoords(coords)
+        setIsLoading(false)
 
         if(hasError){
             return console.log('Hubo un error')
         }
+
         setCurrentWeather(data)
         onHiddenFormModal()
     }
@@ -27,32 +33,45 @@ export const Form = ({ setCurrentWeather, onHiddenFormModal, coords }) => {
             return
         }
 
+        setIsLoading(true)
         const { hasError, data } = await getWeatherByPlace( place.trim(), country )
+        setIsLoading(false)
 
         if(hasError){
             return console.log('Hubo un error')
         }
 
         setCurrentWeather(data)
+        setMsgLocationNotAuthorized(undefined)
         onHiddenFormModal()
     }
 
 
     return (
         <article>
+            {
+                msgLocationNotAuthorized && (
+                    <p className="modal__error">{ msgLocationNotAuthorized }</p>
+                )
+            }
             <header className="modal__header">
                 <button
                     onClick={ onClick }
+                    disabled={ isLoading }
                     className="modal__btn-my-location"
                 >
                     🔰 Mi ubicación
                 </button>
-                <button 
-                    onClick={ onHiddenFormModal }
-                    className="modal__btn-close"
-                >
-                    X
-                </button>
+                {
+                    !msgLocationNotAuthorized && (
+                        <button 
+                            onClick={ onHiddenFormModal }
+                            className="modal__btn-close"
+                        >
+                            X
+                        </button>
+                    )
+                }
             </header>
             <form
                 onSubmit={ handleSubmit }
@@ -66,6 +85,7 @@ export const Form = ({ setCurrentWeather, onHiddenFormModal, coords }) => {
                         id="place"
                         value={place}
                         onChange={({ target })=> setPlace(target.value) }
+                        disabled={ isLoading }
                         className="form__input"
                     />
                 </div>
@@ -75,7 +95,8 @@ export const Form = ({ setCurrentWeather, onHiddenFormModal, coords }) => {
                         name="country" 
                         id="country"
                         value={ country }
-                        onChange={ ({ target })=> setCountry(target.value) } 
+                        onChange={ ({ target })=> setCountry(target.value) }
+                        disabled={ isLoading } 
                         className="form__input"
                     >
                         {
@@ -90,8 +111,13 @@ export const Form = ({ setCurrentWeather, onHiddenFormModal, coords }) => {
                 <button
                     type="submit"
                     className="button-submit"
+                    disabled={ isLoading }
                 >
-                    Buscar
+                    {
+                        isLoading
+                        ?( <LoadingSpinner /> )
+                        : 'Buscar'
+                    }
                 </button>
             </form>
         </article>
@@ -101,5 +127,7 @@ export const Form = ({ setCurrentWeather, onHiddenFormModal, coords }) => {
 Form.propTypes = {
     setCurrentWeather: PropTypes.func,
     onHiddenFormModal: PropTypes.func,
-    coords: PropTypes.object
+    coords: PropTypes.object,
+    msgLocationNotAuthorized: PropTypes.string,
+    setMsgLocationNotAuthorized: PropTypes.func
 }

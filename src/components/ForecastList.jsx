@@ -5,6 +5,7 @@ import './styles/forecastList.css'
 
 
 export const ForecastList = ({ forecastList, city, isCel }) => {
+    
     return (
         <section className="forecast">
             <h2 className="forecast__title">Pronostico</h2>
