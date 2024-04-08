@@ -1,8 +1,8 @@
-# Pronostico del Clima  <img src="https://img.icons8.com/color/32/000000/javascript--v1.png"/><img src="https://img.icons8.com/color/32/000000/react-native.png"/>
+# Pronóstico del Clima  <img src="https://img.icons8.com/color/32/000000/javascript--v1.png"/><img src="https://img.icons8.com/color/32/000000/react-native.png"/>
 
-Este es un proyecto desarrollado en [React](https://reactjs.org) que muestra el clima actual y el pronostico semanal, el usuario puede activar su ubicación y obtener su pronostico climático o también puede ingresar un lugar desde un formulario. También se cambia la imagen de fondo según la condición del clima, para una experiencia visual agradable.
+Este es un proyecto desarrollado en [React](https://reactjs.org) que muestra el clima actual y el pronóstico semanal, el usuario puede activar su ubicación y obtener su pronóstico climático o también puede ingresar un lugar desde un formulario. También se cambia la imagen de fondo según la condición del clima, para una experiencia visual agradable.
 
-[![App del pronostico del clima](/public/img/screen-weather-app.webp)](https://weatherapp-jsx.netlify.app)
+[![App del pronóstico del clima](/public/img/screen-weather-app.webp)](https://weatherapp-jsx.netlify.app)
 
 ## Características principales
 
@@ -33,7 +33,7 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 git clone https://github.com/tonatiujsanchez/weather-app.git
 ```
 
-2. **Ingresa las variables de entorno:** Modifica en archivo .env.template a .env y llena las variables correspondiente
+2. **Ingresa las variables de entorno:** Modifica en archivo .env.template a .env y llena las variables correspondientes:
 ```
 VITE_OPEN_WEATHER_API_KEY=
 ```
@@ -48,7 +48,7 @@ npm install
 npm run dev
 ```
 
-5. **Explora:** ¡Explora el pronostico del tiempo de lugares que elijas con fondos dinámicos!
+5. **Explora:** ¡Explora el pronóstico del tiempo de lugares que elijas con fondos dinámicos!
 
 ## Contribución
 

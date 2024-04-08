@@ -8,7 +8,7 @@ export const ForecastList = ({ forecastList, city, isCel }) => {
     
     return (
         <section className="forecast">
-            <h2 className="forecast__title">Pronostico</h2>
+            <h2 className="forecast__title">Pronóstico</h2>
             <div className="forecast-list">
                 {
                     forecastList.map( forecast => (
