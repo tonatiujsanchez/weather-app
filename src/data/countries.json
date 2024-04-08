@@ -20,6 +20,11 @@
         "flag": "🇧🇷"
     },
     {
+        "name": "Canadá",
+        "key": "CA",
+        "flag": "🇨🇦"
+    },
+    {
         "name": "Chile",
         "key": "CL",
         "flag": "🇨🇱"
@@ -48,6 +53,16 @@
         "name": "El Salvador",
         "key": "SV",
         "flag": "🇸🇻"
+    },
+    {
+        "name": "España",
+        "key": "ES",
+        "flag": "🇪🇸"
+    },
+    {
+        "name": "Estados Unidos",
+        "key": "US",
+        "flag": "🇺🇸"
     },
     {
         "name": "Guatemala",
