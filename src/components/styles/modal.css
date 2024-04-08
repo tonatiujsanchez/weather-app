@@ -17,14 +17,26 @@
 .modal__btn-my-location {
     background-color: white;
     border: 0.1rem solid #cfcfcf;
-    padding: 0.2rem 1rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
     border-radius: 0.3rem;
-    transition: 0.2s;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.modal__btn-my-location svg{
+    width: 1.5rem;
 }
 
 .modal__btn-my-location:hover {
     background-color: rgb(231, 231, 231);
+}
+
+.modal__btn-my-location:active {
+    transform: scale(0.98);
 }
 
 .modal__btn-my-location:disabled {

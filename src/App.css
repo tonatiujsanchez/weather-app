@@ -15,14 +15,16 @@ html {
     /*400, 600, 700, 800, 900 */
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     padding: 0;
     margin: 0;
     box-sizing: inherit;
 }
 
 body {
-    background-image: url('https://e3.365dm.com/23/11/2048x1152/skynews-uk-weather-rainbow_6375407.jpg');
+    background-image: url('https://images.unsplash.com/photo-1580193769210-b8d1c049a7d9?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,7 +73,7 @@ li {
     background: rgba(138, 138, 138, 0.4);
     backdrop-filter: blur(1rem);
     position: fixed;
-    inset: 0; 
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +82,7 @@ li {
 }
 
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
 
     .content {
         flex-direction: row;
@@ -91,6 +93,8 @@ li {
         height: 100vh;
         position: sticky;
         inset-block-start: 0;
+        animation-name: bounceInLeft;
+        animation-duration: 0.8s;
     }
 
     .current-weather__place {
@@ -98,7 +102,7 @@ li {
     }
 
     .current-weather__icon {
-        max-width: 100%;  
+        max-width: 100%;
     }
 
     .current-weather__temp {
@@ -115,5 +119,88 @@ li {
 
     .modal__children {
         min-width: 40rem;
+    }
+}
+
+
+@-webkit-keyframes bounceInLeft {
+
+    0%,
+    100%,
+    60%,
+    75%,
+    90% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+        transition-timing-function: cubic-bezier(0.215, .61, .355, 1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-3000px, 0, 0);
+        transform: translate3d(-3000px, 0, 0)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(25px, 0, 0);
+        transform: translate3d(25px, 0, 0)
+    }
+
+    75% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0)
+    }
+
+    90% {
+        -webkit-transform: translate3d(5px, 0, 0);
+        transform: translate3d(5px, 0, 0)
+    }
+
+    100% {
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@keyframes bounceInLeft {
+    0%,
+    100%,
+    60%,
+    75%,
+    90% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+        transition-timing-function: cubic-bezier(0.215, .61, .355, 1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-3000px, 0, 0);
+        -ms-transform: translate3d(-3000px, 0, 0);
+        transform: translate3d(-3000px, 0, 0)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(25px, 0, 0);
+        -ms-transform: translate3d(25px, 0, 0);
+        transform: translate3d(25px, 0, 0)
+    }
+
+    75% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        -ms-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0)
+    }
+
+    90% {
+        -webkit-transform: translate3d(5px, 0, 0);
+        -ms-transform: translate3d(5px, 0, 0);
+        transform: translate3d(5px, 0, 0)
+    }
+
+    100% {
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none
     }
 }
