@@ -4,7 +4,7 @@ export const getBackground = (weatherId) => {
 
     if (weatherId >= 200 && weatherId <= 250) {
         // thunder
-        return 'https://blog.elgi.com/wp-content/uploads/2018/07/shutterstock_123174094.jpg.jpeg';
+        return 'https://images.unsplash.com/photo-1587228270638-2c0ac062c01a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
     }
 
     if (weatherId >= 300 && weatherId <= 350) {

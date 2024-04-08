@@ -22,7 +22,6 @@ function App() {
     }
 
     const error = () => {
-        console.error('Hubicaciòn no autorizada')
         setMsgLocationNotAuthorized('Por favor, habilite el acceso a la ubicación en la configuración de su navegador o ingrese un lugar desde el formulario.')
         setIsLoading(false)
     }
